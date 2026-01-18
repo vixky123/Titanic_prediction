@@ -1,33 +1,42 @@
-🚢 Titanic - Machine Learning from Disaster
-This project implements a predictive pipeline to determine passenger survival on the Titanic. It utilizes various machine learning classification algorithms and focuses on feature selection and model benchmarking to achieve robust results.
-📊 Project Overview
-The goal of this project is to predict whether a passenger survived the Titanic shipwreck based on features such as ticket class and sex. This is a classic binary classification problem solved using the Python data science ecosystem.
-🛠️ Tech Stack
-Language: Python 3.12
+# 🚢 Titanic - Machine Learning from Disaster
 
-Libraries: * Data Handling: Pandas, NumPy
+This repository contains a comprehensive machine learning pipeline to predict passenger survival on the Titanic. The project benchmarks multiple classification algorithms to identify the most effective predictive model.
 
-Visualization: Seaborn, Matplotlib
+## 📊 Project Overview
+The Titanic shipwreck is one of the most infamous maritime disasters in history. Using data from the passenger manifest, this project builds predictive models to answer the question: “What sorts of people were more likely to survive?” using features like socio-economic status, gender, and age.
 
-Machine Learning: Scikit-Learn, XGBoost, CatBoost, RandomForestClassifier, DecisionTreeClassifier
+## 🛠️ Technical Stack
+* **Language:** Python 3.12
+* **Libraries:**
+  * **Data Analysis:** `Pandas`, `NumPy`
+  * **Visualization:** `Seaborn`, `Matplotlib`
+  * **Machine Learning:** `Scikit-Learn`, `XGBoost`, `CatBoost`
 
-🚀 Workflow
-1. Exploratory Data Analysis (EDA)
-Analyzed missing values across the dataset (identifying 177 missing Age values and 687 missing Cabin values).
+## 🚀 Key Features
 
-Visualized feature correlations using a Pearson Correlation Heatmap to identify variables with the highest predictive power for survival.
+### 1. Data Cleaning & EDA
+* Identified missing values: **177** in `Age` and **687** in `Cabin`.
+* Generated a **Pearson Correlation Heatmap** using `Seaborn` to visualize the relationship between features and the target variable (`Survived`).
 
-2. Data Preprocessing
-Feature Selection: Systematically dropped irrelevant or high-cardinality features including PassengerId, Name, Age, Ticket, Fare, Embarked, Cabin, and Parch.
+### 2. Feature Engineering
+* **Categorical Encoding:** Utilized `LabelEncoder` to transform the `Sex` column into a machine-readable numerical format.
+* **Feature Selection:** Systematically removed low-correlation and high-cardinality features: `PassengerId`, `Name`, `Age`, `Ticket`, `Fare`, `Embarked`, `Cabin`, and `Parch`.
 
-Categorical Encoding: Converted the Sex feature into numerical format using LabelEncoder to make it compatible with machine learning models.
+### 3. Model Benchmarking
+Five distinct classification algorithms were implemented and evaluated using the **F1-Score** to ensure balanced precision and recall:
 
-3. Model Benchmarking
-The project evaluates five different classification models using the F1-Score to ensure a balance between precision and recall:
+* **Logistic Regression:** Achieved a baseline F1-score of **0.7536**.
+* **Random Forest:** Configured with `n_estimators=50` and `entropy` criterion.
+* **Decision Tree:** Implemented with `max_depth=50`.
+* **CatBoost:** Leveraged gradient boosting on decision trees.
+* **XGBoost:** Utilized for high-performance gradient boosting.
 
-Model,Evaluation Metric
-Logistic Regression,F1-Score: ~0.75
-Random Forest,Entropy-based ensemble
-Decision Tree,Deep tree classification
-CatBoost,Gradient boosting on decision trees
-XGBoost,Optimized distributed gradient boosting
+## 📂 File Structure
+* `notebook6d17e35d2e.ipynb`: Main analysis and modeling notebook.
+* `/kaggle/input/titanic/`: Source dataset files (`train.csv`, `test.csv`).
+
+## 📈 Results Summary
+The Logistic Regression model served as a strong baseline with a competitive F1-score, while the ensemble methods (Random Forest, XGBoost, CatBoost) provided a framework for further hyperparameter optimization.
+
+---
+*Developed as part of a Kaggle Competition analysis.*
